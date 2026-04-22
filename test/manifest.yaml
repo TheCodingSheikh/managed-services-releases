@@ -11,7 +11,7 @@ metadata:
     lab.backstage.io/title: Test Tenant
     lab.backstage.io/name: test-tenant
     lab.backstage.io/system: tenant
-    lab.backstage.io/owners: user:default/abdo:admin,user:default/abdo2:edit
+    lab.backstage.io/owners: 'user:default/abdo:admin,user:default/abdo2:edit'
     # Backstage entity scaffolder plugin
     backstage.io/last-applied-configuration: '{"tenant":"test","owners":[{"role":"admin","subject":"user:default/abdo"},{"role":"edit","subject":"user:default/abdo2"}]}'
     backstage.io/scaffolder-template: template:default/tenant

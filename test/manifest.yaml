@@ -18,6 +18,8 @@ metadata:
     backstage.io/scaffolder-template: template:default/tenant
     backstage.io/immutable-fields: 'tenant'
     backstage.io/scaffolder-edit-roles: 'admin'
+  labels:
+    app.kubernetes.io/instance: test-tenant
 spec:
   values:
     tenant: test

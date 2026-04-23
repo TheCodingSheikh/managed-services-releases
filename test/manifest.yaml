@@ -12,7 +12,7 @@ metadata:
     lab.backstage.io/name: test-tenant
     lab.backstage.io/system: tenant
     lab.backstage.io/owners: 'user:default/abdo:admin,user:default/abdo2:edit'
-    lab.kubernetes-label-selector: 'app.kubernetes.io/instance=test-tenant'
+    lab.backstage.io/kubernetes-label-selector: 'app.kubernetes.io/instance=test-tenant'
     # Backstage entity scaffolder plugin
     backstage.io/last-applied-configuration: '{"tenant":"test","owners":[{"role":"admin","subject":"user:default/abdo"},{"role":"edit","subject":"user:default/abdo2"}]}'
     backstage.io/scaffolder-template: template:default/tenant

@@ -1,0 +1,30 @@
+apiVersion: managedservices.thecodingsheikh.io/v1alpha1
+kind: Tenant
+metadata:
+  name: "ma-tenant"
+  annotations:
+    # Backstage catalog discovery 
+    lab.backstage.io/add-to-catalog: "true"
+    lab.backstage.io/system-type: app
+    lab.backstage.io/component-type: service
+    lab.backstage.io/lifecycle: managed
+    lab.backstage.io/title: Ma Tenant
+    lab.backstage.io/name: ma-tenant
+    lab.backstage.io/system: tenant
+    lab.backstage.io/owners: 'user:default/abdo:admin,user:default/abdo3:edit'
+    lab.kubernetes-label-selector: 'app.kubernetes.io/instance=ma-tenant'
+    # Backstage entity scaffolder plugin
+    backstage.io/last-applied-configuration: '{"tenant":"ma","owners":[{"role":"admin","subject":"user:default/abdo"},{"role":"edit","subject":"user:default/abdo3"}]}'
+    backstage.io/scaffolder-template: template:default/tenant
+    backstage.io/immutable-fields: 'tenant'
+    backstage.io/scaffolder-edit-roles: 'admin'
+  label:
+    app.kubernetes.io/instance: 'ma-tenant'
+spec:
+  values:
+    tenant: ma
+    owners:
+      - subject: user:default/abdo
+        role: admin
+      - subject: user:default/abdo3
+        role: edit

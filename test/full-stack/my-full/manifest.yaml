@@ -1,0 +1,78 @@
+apiVersion: managedservices.thecodingsheikh.io/v1alpha1
+kind: FullStack
+metadata:
+  name: "test-tenant-my-full-full-stack"
+  annotations:
+    lab.backstage.io/add-to-catalog: "true"
+    lab.backstage.io/system-type: app
+    lab.backstage.io/component-type: service
+    lab.backstage.io/lifecycle: managed
+    lab.backstage.io/dependsOn: component:default/test-tenant
+    lab.backstage.io/title: Test Tenant My Full Full Stack
+    lab.backstage.io/name: test-tenant-my-full-full-stack
+    lab.backstage.io/system: full-stack
+    lab.backstage.io/owners: ''
+    lab.backstage.io/kubernetes-label-selector: 'app.kubernetes.io/instance=test-tenant-my-full-full-stack'
+    lab.backstage.io/links: |-
+      [
+        {
+          "url": "http://test-tenant-my-full-full-stack-app.test-tenant-full-stack-my-full.svc.cluster.local",
+          "title": "Webapp (internal)",
+          "icon": "web"
+        },
+        {
+          "url": "postgresql://test-tenant-my-full-full-stack-db-primary.test-tenant-full-stack-my-full.svc.cluster.local:5432/app",
+          "title": "Postgres (app @ app)",
+          "icon": "storage"
+        }
+      ]
+    backstage.io/last-applied-configuration: '{"tenant":"component:default/test-tenant","serviceType":"full-stack","name":"my-full","webapp":{"image":"nginx:1.27","replicas":2,"port":8080,"host":"","env":[],"resources":{"cpu":"100m","memory":"128Mi","cpuLimit":"500m","memoryLimit":"512Mi"}},"postgres":{"version":16,"replicas":1,"storageSize":"10Gi","storageClass":"","resources":{"cpu":"250m","memory":"512Mi","cpuLimit":"1","memoryLimit":"2Gi"},"backups":{"enabled":true,"schedule":"0 1 * * 0","retention":7}},"db":{"user":"app","database":"app","envVars":[{"name":"DATABASE_URL","secretKey":"uri"},{"name":"DB_HOST","secretKey":"host"},{"name":"DB_PORT","secretKey":"port"},{"name":"DB_USER","secretKey":"user"},{"name":"DB_PASSWORD","secretKey":"password"},{"name":"DB_NAME","secretKey":"dbname"}]}}'
+    backstage.io/scaffolder-template: template:default/full-stack
+    backstage.io/immutable-fields: 'tenant,name'
+  label:
+    app.kubernetes.io/instance: 'test-tenant-my-full-full-stack'
+spec:
+  values:
+    tenant: test
+    name: my-full
+    webapp:
+      image: nginx:1.27
+      replicas: 2
+      port: 8080
+      host: 
+      env:
+      resources:
+        cpu: 100m
+        memory: 128Mi
+        cpuLimit: 500m
+        memoryLimit: 512Mi
+    postgres:
+      version: 16
+      replicas: 1
+      storageSize: 10Gi
+      storageClass: 
+      resources:
+        cpu: 250m
+        memory: 512Mi
+        cpuLimit: 1
+        memoryLimit: 2Gi
+      backups:
+        enabled: true
+        schedule: 0 1 * * 0
+        retention: 7
+    db:
+      user: app
+      database: app
+      envVars:
+        - name: DATABASE_URL
+          secretKey: uri
+        - name: DB_HOST
+          secretKey: host
+        - name: DB_PORT
+          secretKey: port
+        - name: DB_USER
+          secretKey: user
+        - name: DB_PASSWORD
+          secretKey: password
+        - name: DB_NAME
+          secretKey: dbname

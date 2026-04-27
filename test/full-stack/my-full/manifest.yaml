@@ -54,7 +54,7 @@ spec:
       resources:
         cpu: 250m
         memory: 512Mi
-        cpuLimit: 1
+        cpuLimit: "1"
         memoryLimit: 2Gi
       backups:
         enabled: true

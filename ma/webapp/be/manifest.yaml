@@ -1,0 +1,49 @@
+apiVersion: managedservices.thecodingsheikh.io/v1alpha1
+kind: Webapp
+metadata:
+  name: "ma-tenant-be-webapp"
+  annotations:
+    lab.backstage.io/add-to-catalog: "true"
+    lab.backstage.io/system-type: app
+    lab.backstage.io/component-type: service
+    lab.backstage.io/lifecycle: managed
+    lab.backstage.io/dependsOn: component:default/ma-tenant
+    lab.backstage.io/title: Ma Tenant Be Webapp
+    lab.backstage.io/name: ma-tenant-be-webapp
+    lab.backstage.io/system: webapp
+    lab.backstage.io/kubernetes-label-selector: 'app.kubernetes.io/instance=ma-tenant-be-webapp'
+    lab.backstage.io/links: |-
+      [
+        {
+          "url": "http://ma-tenant-be-webapp.ma-tenant-be-webapp.svc.cluster.local",
+          "title": "Internal Service",
+          "icon": "web"
+        },
+        {
+          "url": "https://be.lab.com",
+          "title": "Public Endpoint",
+          "icon": "web"
+        }
+      ]
+    backstage.io/last-applied-configuration: '{"tenant":"component:default/ma-tenant","serviceType":"webapp","image":"nginx:1.27","replicas":2,"port":8080,"host":"be.lab.com","name":"be","env":[{"name":"REE","value":"ads"}],"envFromSecrets":[],"resources":{"cpu":"100m","memory":"128Mi","cpuLimit":"500m","memoryLimit":"512Mi"}}'
+    backstage.io/scaffolder-template: template:default/webapp
+    backstage.io/immutable-fields: 'tenant,name'
+  label:
+    app.kubernetes.io/instance: 'ma-tenant-be-webapp'
+spec:
+  values:
+    tenant: ma
+    name: be
+    image: nginx:1.27
+    replicas: 2
+    port: 8080
+    host: be.lab.com
+    env:
+      - name: REE
+        value: ads
+    envFromSecrets:
+    resources:
+      cpu: 100m
+      memory: 128Mi
+      cpuLimit: 500m
+      memoryLimit: 512Mi

@@ -14,7 +14,7 @@ metadata:
     lab.backstage.io/owners: 'user:default/abdo:admin,user:default/abdo3:edit'
     lab.kubernetes-label-selector: 'app.kubernetes.io/instance=ma-tenant'
     # Backstage entity scaffolder plugin
-    backstage.io/last-applied-configuration: '{"tenant":"ma","owners":[{"role":"admin","subject":"user:default/abdo"},{"role":"edit","subject":"user:default/abdo3"}]}'
+    backstage.io/last-applied-configuration: '{"tenant":"ma","owners":[{"role":"admin","subject":"user:default/abdo"},{"role":"edit","subject":"user:default/abdo3"},{"role":"edit","subject":"user:default/abdo4"}]}'
     backstage.io/scaffolder-template: template:default/tenant
     backstage.io/immutable-fields: 'tenant'
     backstage.io/scaffolder-edit-roles: 'admin'
@@ -27,4 +27,6 @@ spec:
       - subject: user:default/abdo
         role: admin
       - subject: user:default/abdo3
+        role: edit
+      - subject: user:default/abdo4
         role: edit

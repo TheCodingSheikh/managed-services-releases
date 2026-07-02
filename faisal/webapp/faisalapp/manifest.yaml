@@ -23,6 +23,7 @@ metadata:
     backstage.io/last-applied-configuration: '{"tenant":"component:default/faisal-tenant","serviceType":"webapp","image":"nginx:1.27","replicas":2,"port":8080,"host":"","name":"faisalapp","env":[],"envFromSecrets":[],"resources":{"cpu":"100m","memory":"128Mi","cpuLimit":"500m","memoryLimit":"512Mi"}}'
     backstage.io/scaffolder-template: template:default/webapp
     backstage.io/immutable-fields: 'tenant,name'
+    backstage.io/scaffolder-edit-roles: 'admin,edit'
   label:
     app.kubernetes.io/instance: 'faisal-tenant-faisalapp-webapp'
 spec:

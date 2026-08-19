@@ -20,7 +20,7 @@ metadata:
           "icon": "kubernetes"
         }
       ]
-    backstage.io/last-applied-configuration: '{"tenant":"component:default/ma-tenant","serviceType":"kubernetes-cluster","version":"v1.34.10","name":"test","controlPlane":{"highlyAvailable":false,"numCores":2,"memoryMiB":2048,"diskGb":40},"nodePools":[{"name":"default","replicas":1,"numCores":2,"memoryMiB":2048,"diskGb":40}],"network":{"nodeAddresses":["192.168.10.26-192.168.10.29"],"controlPlaneEndpoint":"192.168.10.10"}}'
+    backstage.io/last-applied-configuration: '{"tenant":"component:default/ma-tenant","serviceType":"kubernetes-cluster","version":"v1.34.10","name":"test","controlPlane":{"highlyAvailable":false,"numCores":2,"memoryMiB":2048,"diskGb":40},"nodePools":[{"name":"default","replicas":1,"numCores":3,"memoryMiB":2048,"diskGb":40},{"name":"extra","replicas":1,"numCores":2,"memoryMiB":2048,"diskGb":40}],"network":{"controlPlaneEndpoint":"192.168.10.10","nodeAddresses":["192.168.10.26-192.168.10.29"]},"firstRun":false,"__originalFormValues":{"tenant":"component:default/ma-tenant","serviceType":"kubernetes-cluster","version":"v1.34.10","name":"test","controlPlane":{"highlyAvailable":false,"numCores":2,"memoryMiB":2048,"diskGb":40},"nodePools":[{"name":"default","replicas":1,"numCores":2,"memoryMiB":2048,"diskGb":40}],"network":{"nodeAddresses":["192.168.10.26-192.168.10.29"],"controlPlaneEndpoint":"192.168.10.10"}}}'
     backstage.io/scaffolder-template: template:default/kubernetes-cluster
     backstage.io/immutable-fields: 'tenant,name'
     backstage.io/scaffolder-edit-roles: 'admin,edit'
@@ -38,6 +38,11 @@ spec:
       diskGb: 40
     nodePools:
       - name: "default"
+        replicas: 1
+        numCores: 3
+        memoryMiB: 2048
+        diskGb: 40
+      - name: "extra"
         replicas: 1
         numCores: 2
         memoryMiB: 2048

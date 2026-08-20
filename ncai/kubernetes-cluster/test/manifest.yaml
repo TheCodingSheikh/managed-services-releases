@@ -1,0 +1,48 @@
+apiVersion: managedservices.thecodingsheikh.io/v1alpha1
+kind: KubernetesCluster
+metadata:
+  name: "ncai-tenant-test-kubernetes-cluster"
+  annotations:
+    lab.backstage.io/add-to-catalog: "true"
+    lab.backstage.io/system-type: app
+    lab.backstage.io/component-type: service
+    lab.backstage.io/lifecycle: managed
+    lab.backstage.io/dependsOn: component:default/ncai-tenant
+    lab.backstage.io/title: Ncai Tenant Test Kubernetes Cluster
+    lab.backstage.io/name: ncai-tenant-test-kubernetes-cluster
+    lab.backstage.io/system: kubernetes-cluster
+    lab.backstage.io/kubernetes-label-selector: 'app.kubernetes.io/instance=ncai-tenant-test-kubernetes-cluster'
+    lab.backstage.io/links: |-
+      [
+        {
+          "url": "https://192.168.10.10:6443",
+          "title": "Kubernetes API",
+          "icon": "kubernetes"
+        }
+      ]
+    backstage.io/last-applied-configuration: '{"tenant":"component:default/ncai-tenant","serviceType":"kubernetes-cluster","version":"v1.34.10","name":"test","controlPlane":{"highlyAvailable":false,"numCores":2,"memoryMiB":2048,"diskGb":40},"nodePools":[{"name":"default","replicas":1,"numCores":2,"memoryMiB":2048,"diskGb":40}],"network":{"nodeAddresses":["192.168.10.26-192.168.10.29"],"controlPlaneEndpoint":"192.168.10.10"}}'
+    backstage.io/scaffolder-template: template:default/kubernetes-cluster
+    backstage.io/immutable-fields: 'tenant,name'
+    backstage.io/scaffolder-edit-roles: 'admin,edit'
+  label:
+    app.kubernetes.io/instance: 'ncai-tenant-test-kubernetes-cluster'
+spec:
+  values:
+    tenant: "ncai"
+    name: "test"
+    version: "v1.34.10"
+    controlPlane:
+      highlyAvailable: false
+      numCores: 2
+      memoryMiB: 2048
+      diskGb: 40
+    nodePools:
+      - name: "default"
+        replicas: 1
+        numCores: 2
+        memoryMiB: 2048
+        diskGb: 40
+    network:
+      controlPlaneEndpoint: "192.168.10.10"
+      nodeAddresses:
+        - "192.168.10.26-192.168.10.29"

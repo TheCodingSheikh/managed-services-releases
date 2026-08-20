@@ -1,0 +1,28 @@
+apiVersion: managedservices.thecodingsheikh.io/v1alpha1
+kind: Tenant
+metadata:
+  name: "ncai-tenant"
+  annotations:
+    # Backstage catalog discovery 
+    lab.backstage.io/add-to-catalog: "true"
+    lab.backstage.io/system-type: app
+    lab.backstage.io/component-type: service
+    lab.backstage.io/lifecycle: managed
+    lab.backstage.io/title: Ncai Tenant
+    lab.backstage.io/name: ncai-tenant
+    lab.backstage.io/system: tenant
+    lab.backstage.io/owners: 'group:default/home-admins:admin'
+    lab.kubernetes-label-selector: 'app.kubernetes.io/instance=ncai-tenant'
+    # Backstage entity scaffolder plugin
+    backstage.io/last-applied-configuration: '{"tenant":"ncai","owners":[{"role":"admin","subject":"group:default/home-admins"}]}'
+    backstage.io/scaffolder-template: template:default/tenant
+    backstage.io/immutable-fields: 'tenant'
+    backstage.io/scaffolder-edit-roles: 'admin'
+  label:
+    app.kubernetes.io/instance: 'ncai-tenant'
+spec:
+  values:
+    tenant: ncai
+    owners:
+      - subject: group:default/home-admins
+        role: admin
